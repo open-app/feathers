@@ -1,0 +1,10 @@
+var env = process.env.NODE_ENV || 'development';
+
+require('../')(
+  require('oa-graphs')({
+    db: require('level-test')()(env+'.db'),
+    graphs: require('oa-graphs/lib'),
+  })
+)
+.listen(5000)
+;
