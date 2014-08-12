@@ -39,7 +39,7 @@ var checkPerson = function (actual, expected) {
 
 describe("#PersonService", function () {
   var types;
-  var people;
+  var People;
   var memberships;
   var groups;
   var db;
@@ -54,7 +54,7 @@ describe("#PersonService", function () {
       base: "http://open.app/",
     });
 
-    people = graphs.use(
+    People = graphs.use(
       require('oa-graphs/lib/People')
     );
 
@@ -72,18 +72,18 @@ describe("#PersonService", function () {
     var id;
 
     return request
-    .post("/people")
+    .post("/People")
     .send(bob)
     .expect("Content-Type", /json/)
     .expect(201)
     .then(function (res) {
       var person = res.body;
-      expect(person['@context']).to.deep.equal(people.type.context());
+      expect(person['@context']).to.deep.equal(People.type.context());
       checkPerson(person, bob)
       id = person['@id'];
     })
     .then(function () {
-      return people.get(id);
+      return People.get(id);
     })
     .then(function (person) {
       checkPerson(person, bob);
@@ -93,10 +93,10 @@ describe("#PersonService", function () {
 
   it("should get all Persons", function () {
 
-    return people.create(bob)
+    return People.create(bob)
     .then(function () {
       return request
-      .get("/people")
+      .get("/People")
       .expect("Content-Type", /json/)
       .expect(200)
       ;
@@ -105,7 +105,7 @@ describe("#PersonService", function () {
       var people = res.body;
       expect(people).to.have.length(1);
       var person = people[0];
-      expect(person['@context']).to.deep.equal(people.type.context());
+      expect(person['@context']).to.deep.equal(People.type.context());
       checkPerson(person, bob)
     })
     ;
@@ -113,16 +113,16 @@ describe("#PersonService", function () {
 
   it("should get a person", function () {
 
-    return people.create(bob)
+    return People.create(bob)
     .then(function (person) {
       return request
-      .get("/people/" + urlencode(person['@id']))
+      .get("/People/" + urlencode(person['@id']))
       .expect(200)
       ;
     })
     .then(function (res) {
       var person = res.body;
-      expect(person['@context']).to.deep.equal(people.type.context());
+      expect(person['@context']).to.deep.equal(People.type.context());
       checkPerson(person, bob)
     });
   });
@@ -134,17 +134,17 @@ describe("#PersonService", function () {
       email: "bobsnewemail@email.com",
     };
 
-    return people.create(bob)
+    return People.create(bob)
     .then(function (person) {
       return request
-      .put("/people/" + urlencode(person['@id']))
+      .put("/People/" + urlencode(person['@id']))
       .send(newData)
       .expect(200)
       ;
     })
     .then(function (res) {
       var person = res.body;
-      expect(person['@context']).to.deep.equal(people.type.context());
+      expect(person['@context']).to.deep.equal(People.type.context());
       checkPerson(person, newData)
     });
   });
@@ -152,33 +152,33 @@ describe("#PersonService", function () {
   it("should delete a person", function () {
     var id;
 
-    return people.create(bob)
+    return People.create(bob)
     .then(function (person) {
       id = person['@id']
 
       // delete bob with api
       return request
-      .delete("/people/" + urlencode(id))
+      .delete("/People/" + urlencode(id))
       .expect(204)
       ;
     })
     .then(function (res) {
       // get deleted bob from database
-      return people.get(id)
+      return People.get(id)
     })
     .then(function (person) {
-      expect(person).to.not.exist;
+      expect(person).to.deep.equal({});
 
       // get deleted bob from api
       return request
-      .get("/people/" + urlencode(id))
+      .get("/People/" + urlencode(id))
       .expect(404)
       ;
     })
     ;
   });
 
-  it("should batch create people", function () {
+  it("should batch create People", function () {
     // TODO
   });
 });
