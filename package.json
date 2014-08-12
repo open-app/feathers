@@ -1,6 +1,6 @@
 {
   "name": "oa-feathers",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "OpenApp feathers registry",
   "main": "index.js",
   "scripts": {
