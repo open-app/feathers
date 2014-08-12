@@ -1,8 +1,8 @@
 {
-  "name": "oa-services",
+  "name": "oa-feathers",
   "version": "0.0.0",
-  "description": "OpenApp services registry",
   "main": "lib/index.js",
+  "description": "OpenApp feathers registry",
   "scripts": {
     "start": "node server.js",
     "test": "(export NODE_ENV=test; export DEBUG=*; mocha test/**/*.js)",
@@ -12,14 +12,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git://github.com/open-app/services.git"
+    "url": "git://github.com/open-app/feathers.git"
   },
   "author": "open-app",
   "license": "AGPLv3",
   "bugs": {
-    "url": "https://github.com/open-app/services/issues"
+    "url": "https://github.com/open-app/feathers/issues"
   },
-  "homepage": "https://github.com/open-app/services",
+  "homepage": "https://github.com/open-app/feathers",
   "dependencies": {
     "body-parser": "^1.4.3",
     "debug": "^1.0.3",
