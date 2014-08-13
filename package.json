@@ -23,7 +23,8 @@
   "dependencies": {
     "body-parser": "^1.4.3",
     "debug": "^1.0.3",
-    "feathers": "^1.0.0-pre.5"
+    "feathers": "^1.0.0-pre.5",
+    "oa-feather": "git://github.com/open-app/feather"
   },
   "devDependencies": {
     "bluebird": "^2.2.2",
@@ -37,7 +38,6 @@
     "mocha": "^1.20.1",
     "nodemon": "^1.2.1",
     "oa-graphs": "git://github.com/open-app/graphs",
-    "oa-feather": "git://github.com/open-app/feather",
     "supertest": "^0.12.1",
     "supertest-as-promised": "^1.0.0",
     "urlencode": "^0.2.0"
