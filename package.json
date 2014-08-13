@@ -22,6 +22,7 @@
   "homepage": "https://github.com/open-app/feathers",
   "dependencies": {
     "body-parser": "^1.4.3",
+    "cors": "^2.4.1",
     "debug": "^1.0.3",
     "feathers": "^1.0.0-pre.5",
     "oa-feather": "git://github.com/open-app/feather"
