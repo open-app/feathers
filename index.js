@@ -1,4 +1,4 @@
-var debug = require('debug')('oa-services')
+var debug = require('debug')('oa-feathers')
 var feathers = require('feathers');
 var bodyParser = require('body-parser');
 
